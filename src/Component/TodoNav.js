@@ -5,11 +5,11 @@ function TodoNav() {
     <>
       <Navbar bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Navbar.Brand href="#home">Todo List</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="https://github.com/oat431">github</Nav.Link>
+            <Nav.Link href="https://github.com/oat431/Todo_list_backend/wiki">backend api</Nav.Link>
+            <Nav.Link href="https://github.com/oat431/React_easy_app">frontend repo</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
