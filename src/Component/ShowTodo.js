@@ -1,26 +1,40 @@
-import { Container,ListGroup } from 'react-bootstrap';
-var todo_list = [
-    'list1',
-    'list2',
-    'list3',
-    'list4',
-    'list5',
-    'list6',
-    'list7',
-    'list8',
-    'list9',
-    'list10',
-];
-function ShowTodo(){
+import { Container, ListGroup } from "react-bootstrap";
+import React, { Component } from "react";
+import Axios from "axios";
+class ShowTodo extends Component {
+  constructor() {
+    super();
+    this.state = {
+      todo_list: [],
+    };
+  }
+
+  componentDidMount() {
+    Axios.get("http://167.99.64.31:5039/api/todo/todolist", {
+      header: { "Access-Control-Allow-Origin": "*" },
+    })
+      .then((res) => {
+          console.log(res.data);
+          this.setState({ todo_list: res.data });
+      })
+      .catch((err) => {
+        console.log("some err happen");
+      });
+  }
+
+  render() {
     return (
-        <Container>
-            <ListGroup as='ul'>
-                {todo_list.map((item)=>{
-                    return <ListGroup.Item as='li'>{item}</ListGroup.Item>;
-                })}
-            </ListGroup>
-        </Container> 
+      <Container>
+        <ListGroup as="ul">
+          {this.state.todo_list.map((item, index) => {
+            return (
+              <ListGroup.Item as="li"><strong>{index + " " + item.title}</strong> update on {item.date}</ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </Container>
     );
+  }
 }
 
 export default ShowTodo;
